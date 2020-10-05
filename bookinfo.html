@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Information Page</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+</head>
+<body>
+    <h1 id="head"></h1>
+    <div id="inf"></div>
+    <script>
+        var bk=localStorage.getItem('bookToCheck');
+        var firebaseConfig = {
+    apiKey: "AIzaSyAQ5sli_OSpf6eTGNIKK5iC_7O03BuzK1c",
+    authDomain: "candtlinalibraryweb.firebaseapp.com",
+    databaseURL: "https://candtlinalibraryweb.firebaseio.com",
+    projectId: "candtlinalibraryweb",
+    storageBucket: "candtlinalibraryweb.appspot.com",
+    messagingSenderId: "657685303262",
+    appId: "1:657685303262:web:216d68cd4ba596fa30974f",
+    measurementId: "G-Q2EMY8P02E"
+  };
+  firebase.initializeApp(firebaseConfig);
+  firebase.database().ref('/').child(bk).on('value', function(snapshot){
+console.log(snapshot.val());
+obj=snapshot.val();
+document.getElementById('head').innerHTML=obj['bookName'];
+phot='<img src="'+obj['image']+'"><br>';
+genre='<h3>Genre:'+obj['genre']+'</h3>';
+descrip='<textarea readonly="true">'+obj['description']+'</textarea>';
+gtf="<h3>Get This From:" + obj['name']+'</h3>';
+tel="<a href='tel:"+obj['phone']+"'>"+obj['phone']+'</a>'
+document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+tel;
+  });
+    </script>
+</body>
+</html>

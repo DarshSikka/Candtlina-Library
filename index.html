@@ -42,11 +42,14 @@
               console.log(childsnapshot.val());
               book_data=childsnapshot.val();
 
-          document.getElementById('dat').innerHTML+='<h1>'+book_data['bookName']+'</h1>'+'<img src="'+book_data['image']+'"<br>'
+          document.getElementById('dat').innerHTML+='<h1 onclick="myFunc(this.innerHTML)">'+book_data['bookName']+'</h1>'+'<img src="'+book_data['image']+'"<br>'
           });
       });
   }
-  functio
+  function myFunc(Nam){
+      localStorage.setItem('bookToCheck', Nam);
+      window.location='bookinfo.html';
+  }
   getData()
   function pb(){
       window.location="postER.html";
