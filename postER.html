@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <style>
+        body{
+            background-color:blue;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Fill in all Details</h1>
+    <input id="nameOB" placeholder="Name Of The Book"><br>
+    <select id="genre">
+        <option>Science Fiction</option>
+        <option>Fantasy</option>
+        <option>Action</option>
+        <option>Comedy</option>
+        <option>Mythology</option>
+        <option>Comedy</option>
+        <option>Spy</option>
+        <option>Other</option>
+    </select>
+    <br>
+    <textarea id="desc">Describe This Book</textarea><br>
+    <input id="name"placeholder="Your Name">
+    <input id="pn"placeholder='Phone Number'>
+    <input type="file"onchange='loadFile(event)' >
+    <img style="display: none"id="image">
+    <canvas id="phot" height='500' width='500'></canvas>
+    <button onclick="post()">Done</button>
+    <script> var firebaseConfig = {
+        apiKey: "AIzaSyAQ5sli_OSpf6eTGNIKK5iC_7O03BuzK1c",
+        authDomain: "candtlinalibraryweb.firebaseapp.com",
+        databaseURL: "https://candtlinalibraryweb.firebaseio.com",
+        projectId: "candtlinalibraryweb",
+        storageBucket: "candtlinalibraryweb.appspot.com",
+        messagingSenderId: "657685303262",
+        appId: "1:657685303262:web:216d68cd4ba596fa30974f",
+        measurementId: "G-Q2EMY8P02E"
+      };
+      var canvas=document.getElementById('phot');
+            
+      ctx=canvas.getContext('2d');
+      firebase.initializeApp(firebaseConfig);
+      function post(){
+          firebase.database().ref('/').child(document.getElementById('nameOB').value).update({
+              genre:document.getElementById('genre').value,
+              description:document.getElementById('desc').value,
+              phone:document.getElementById('pn').value,
+              image:canvas.toDataURL()
+          });
+          window.location='index.html';
+      }
+
+      function loadFile(event) {
+    console.log(event);
+    var blob=URL.createObjectURL(event.target.files[0]);
+    image.src=blob;
+    image.onload=function(){ctx.drawImage(image, 0, 0, canvas.width, canvas.height);}
+
+};
+      </script>
+    </center>
+</body>
+</html>

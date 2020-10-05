@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <style>
+        #pb{
+            background-color:yellow;
+            color: red;
+        }
+        h1{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <button id="pb" onclick="pb()">Post A Book</button>
+    <div id="dat">
+        <h1>All Books</h1>
+    </div>
+    <script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyAQ5sli_OSpf6eTGNIKK5iC_7O03BuzK1c",
+    authDomain: "candtlinalibraryweb.firebaseapp.com",
+    databaseURL: "https://candtlinalibraryweb.firebaseio.com",
+    projectId: "candtlinalibraryweb",
+    storageBucket: "candtlinalibraryweb.appspot.com",
+    messagingSenderId: "657685303262",
+    appId: "1:657685303262:web:216d68cd4ba596fa30974f",
+    measurementId: "G-Q2EMY8P02E"
+  };
+  firebase.initializeApp(firebaseConfig);
+  function getData(){
+      console.log('d')
+      firebase.database().ref("/").on('value', function(snapshot){
+          console.log(snapshot.val());
+          snapshot.forEach(function(childsnapshot){
+              console.log(childsnapshot.val());
+              book_data=childsnapshot.val();
+          document.getElementById('dat').innerHTML+='<img src="'+book_data['image']+'"<br>'
+          });
+         
+      });
+  }
+  getData()
+  function pb(){
+      window.location="postER.html";
+  }
+</script>
+    </script>
+</body>
+</html>
