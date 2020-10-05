@@ -36,6 +36,7 @@
     <img style="display: none"id="image">
     <canvas id="phot" height='500' width='500'></canvas>
     <button onclick="post()">Done</button>
+    <p id="pd"></p>
     <script> var firebaseConfig = {
         apiKey: "AIzaSyAQ5sli_OSpf6eTGNIKK5iC_7O03BuzK1c",
         authDomain: "candtlinalibraryweb.firebaseapp.com",
@@ -55,17 +56,20 @@
               genre:document.getElementById('genre').value,
               description:document.getElementById('desc').value,
               phone:document.getElementById('pn').value,
-              image:canvas.toDataURL()
+              name:document.getElementById('name').value,
+              image:canvas.toDataURL(),
+              bookName:document.getElementById('nameOB').value
           });
+document.getElementById('pd').innerHTML="Your Book Is Posted <button onclick='back()'>Main Page</button>"
+      }
+      function back(){
           window.location='index.html';
       }
-
       function loadFile(event) {
     console.log(event);
     var blob=URL.createObjectURL(event.target.files[0]);
     image.src=blob;
     image.onload=function(){ctx.drawImage(image, 0, 0, canvas.width, canvas.height);}
-
 };
       </script>
     </center>
