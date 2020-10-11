@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post your order</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <style>
+        body{
+            background-color:blue;
+            color:WHITE;
+        }
+        input{
+            height:40px;
+            margin: 50px;
+            width:30%;
+        }
+        input::placeholder{
+            color:red;
+            font-size:35px;
+        }
+        button{
+            color:red;
+            font-size:35px;
+            background-color:yellow;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Your Details</h1>
+    <input id='name' placeholder="Your Name"><br>
+    <input id="tel" placeholder="Telephone Number"><br>
+    <input type="email" id="mail"placeholder="Email Adress"><br>
+    <button onclick="Pli()"> Place Issue</button>
+    </center>
+    <script>
+         var firebaseConfig = {
+    apiKey: "AIzaSyAmyBZX0LvfqLIFFgTW3h2Aw_rpeVnDqj8",
+    authDomain: "telenet-86ee6.firebaseapp.com",
+    databaseURL: "https://telenet-86ee6.firebaseio.com",
+    projectId: "telenet-86ee6",
+    storageBucket: "telenet-86ee6.appspot.com",
+    messagingSenderId: "102403308620",
+    appId: "1:102403308620:web:726a81909fefbe5bc808e9",
+    measurementId: "G-8XRL4L13DM"
+  };
+  firebase.initializeApp(firebaseConfig);
+  function Pli(){
+      today=new Date();
+    now=String(today.getMonth())+String(today.getDay())+String(today.getHours())+String(today.getMinutes());
+    console.log(now);
+    firebase.database().ref('/').child(now).update({
+      Taker:document.getElementById('name').value,
+      Giver:localStorage.getItem('to'),
+      Bookname:localStorage.getItem('sell'),
+      telephone:document.getElementById('tel').value,
+      email:document.getElementById('mail').value
+    });
+  }
+    </script>
+</body>
+</html>
