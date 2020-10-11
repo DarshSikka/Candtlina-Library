@@ -19,7 +19,7 @@
             width: fit-content;
             font-size:55px;
         }
-        h1{
+        h1, p, h3{
             color:white;
         }
         a{
@@ -28,6 +28,9 @@
             text-decoration: underline;
             text-decoration-color: black;
         }
+        img{
+            height:200px; width:200px;
+        }
     </style>
 </head>
 <body>
@@ -35,8 +38,33 @@
     <button id="pb" onclick="pb()">Post A Book</button><br>
     <a  href="https://darshsikka.github.io/Dashbook/">Chat</a>
     <h1>All Books</h1>
-    <div id="dat">
+    <div id="SciFi">
+        <h3>Science Fiction</h3>
+    </div><br>
+    <div id="Fantasy">
+        <h3>Fantasy</h3>
     </div>
+    <br>
+    <div id="Action">
+        <h3>Action</h3>
+    </div>
+    <br>
+    <div id="Comedy">
+        <h3>Comedy</h3>
+    </div>
+    <br>
+    <div id="Mythology">
+        <h3>Mythology</h3>
+    </div>
+    <br>
+    <div id="Spy">
+        <h3>Spy</h3>
+    </div><br>
+    <div id="Other">
+        <h3>Other</h3>
+    </div>
+
+
     </center>
     <script>
   var firebaseConfig = {
@@ -54,12 +82,11 @@
       console.log('d')
       firebase.database().ref("/").on('value', function(snapshot){
           console.log(snapshot.val());
-          document.getElementById('dat').innerHTML="";
           snapshot.forEach(function(childsnapshot){
               console.log(childsnapshot.val());
               book_data=childsnapshot.val();
 
-          document.getElementById('dat').innerHTML+='<h1 onclick="myFunc(this.innerHTML)">'+book_data['bookName']+'</h1>'+'<img src="'+book_data['image']+'"<br>'
+          document.getElementById(book_data['genre']).innerHTML+='<img src="'+book_data['image']+'" name="'+book_data['bookName']+'"onclick="myFunc(this.name)">'
           });
       });
   }
