@@ -33,9 +33,8 @@
 <body>
     <center>
     <button id="pb" onclick="pb()">Post A Book</button><br>
-        
-        <a  href="https://darshsikka.github.io/Dashbook/">Chat</a>
-        <h1>All Books</h1>
+    <a  href="https://darshsikka.github.io/Dashbook/">Chat</a>
+    <h1>All Books</h1>
     <div id="dat">
     </div>
     </center>
@@ -54,7 +53,8 @@
   function getData(){
       console.log('d')
       firebase.database().ref("/").on('value', function(snapshot){
-          console.log(snapshot.val());document.getElementById('dat').innerHTML="";
+          console.log(snapshot.val());
+          document.getElementById('dat').innerHTML="";
           snapshot.forEach(function(childsnapshot){
               console.log(childsnapshot.val());
               book_data=childsnapshot.val();

@@ -16,6 +16,8 @@
             height:40px;
             margin: 50px;
             width:30%;
+            color:red;
+            font-size:35px;
         }
         input::placeholder{
             color:red;
@@ -29,12 +31,13 @@
     </style>
 </head>
 <body>
-    <center>
+    <center id="cont">
+        
         <h1>Your Details</h1>
     <input id='name' placeholder="Your Name"><br>
     <input id="tel" placeholder="Telephone Number"><br>
     <input type="email" id="mail"placeholder="Email Adress"><br>
-    <button onclick="Pli()"> Place Issue</button>
+    <button onclick="Pli()" id="is"> Place Issue</button>
     </center>
     <script>
          var firebaseConfig = {
@@ -59,6 +62,8 @@
       telephone:document.getElementById('tel').value,
       email:document.getElementById('mail').value
     });
+    document.getElementById('is').style.display='none';
+    document.getElementById('cont').innerHTML+="<h3>Order Placed</h3>"
   }
     </script>
 </body>
