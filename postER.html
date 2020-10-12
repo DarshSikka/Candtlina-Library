@@ -19,7 +19,7 @@
     <h1>Fill in all Details</h1>
     <input id="nameOB" placeholder="Name Of The Book"><br>
     <select id="genre">
-        <option>Science Fiction</option>
+        <option value="SciFi">Science Fiction</option>
         <option>Fantasy</option>
         <option>Action</option>
         <option>Comedy</option>
@@ -32,6 +32,7 @@
     <textarea id="desc">Describe This Book</textarea><br>
     <input id="name"placeholder="Your Name">
     <input id="pn"placeholder='Phone Number'>
+    <input id="em" placeholder="Email">
     <input type="file"onchange='loadFile(event)' >
     <img style="display: none"id="image">
     <canvas id="phot" height='500' width='500'></canvas>
@@ -58,7 +59,8 @@
               phone:document.getElementById('pn').value,
               name:document.getElementById('name').value,
               image:canvas.toDataURL(),
-              bookName:document.getElementById('nameOB').value
+              bookName:document.getElementById('nameOB').value,
+              eMail:document.getElementById('em').value
           });
 document.getElementById('pd').innerHTML="Your Book Is Posted <button onclick='back()'>Main Page</button>"
       }

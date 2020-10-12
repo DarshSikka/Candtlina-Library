@@ -45,13 +45,15 @@ genre='<h3>Genre:'+obj['genre']+'</h3>';
 descrip='<textarea readonly="true">'+obj['description']+'</textarea>';
 gtf="<h3>Get This From:" + obj['name']+'</h3>';
 localStorage.setItem('to', gtf);
-tel="<a href='tel:"+obj['phone']+"'>"+obj['phone']+'</a>'
-document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+tel;
+tel="<a href='tel:"+obj['phone']+"'>"+obj['phone']+'</a><br>';
+email="<a href='mailto:"+obj['eMail']+"'>"+obj['eMail']+'</a><br>'
+localStorage.setItem('guysMail', obj['eMail']);
+document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+tel+email;
   });
   function red(){
     window.location='data.html';
-
 localStorage.setItem('sell', document.getElementById('head').innerHTML);
+
   }
     </script>
 </body>
