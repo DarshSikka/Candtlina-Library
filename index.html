@@ -37,7 +37,10 @@
     <center>
     <button id="pb" onclick="pb()">Post A Book</button><br>
     <a  href="https://darshsikka.github.io/Dashbook/">Chat</a>
+
     <h1>All Books</h1>
+    <input id="myInput" onkeydown="myFunction()">
+    <div id="ab">
     <div id="SciFi">
         <h3>Science Fiction</h3>
     </div><br>
@@ -63,7 +66,7 @@
     <div id="Other">
         <h3>Other</h3>
     </div>
-
+    </div>
 
     </center>
     <script>
@@ -98,6 +101,26 @@
   function pb(){
       window.location="postER.html";
   }
+  function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("ab");
+    li = ul.getElementsByTagName("div");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("img");
+        for(gm=0;gm<a.length; gm++){
+            c=a[gm];
+            txtValue=c.name;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            a[gm].style.display='';
+        } else {
+            a[gm].style.display = "none";
+            console.log(document.getElementById(txtValue))
+        }
+        }
+    }
+}
 </script>
     </script>
 </body>
