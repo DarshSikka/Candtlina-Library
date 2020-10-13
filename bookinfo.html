@@ -21,7 +21,7 @@
   <center>
     <h1 id="head"></h1>
     <div id="inf"></div>
-    <button onclick='red()'> I want This</button>
+    <button id="but"onclick='red()' style="display:none"> I want This</button>
     </center>
     <script>
         var bk=localStorage.getItem('bookToCheck');
@@ -49,6 +49,7 @@ tel="<a href='tel:"+obj['phone']+"'>"+obj['phone']+'</a><br>';
 email="<a href='mailto:"+obj['eMail']+"'>"+obj['eMail']+'</a><br>'
 localStorage.setItem('guysMail', obj['eMail']);
 document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+tel+email;
+      document.getElementById('but').style.display='';
   });
   function red(){
     window.location='data.html';
