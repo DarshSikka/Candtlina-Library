@@ -17,6 +17,7 @@
 <body>
     <center>
     <h1>Fill in all Details</h1>
+    <label>Type:</label><select id="ty"><option>Hardcopy</option><option>Ebook</option></select>
     <input id="nameOB" placeholder="Name Of The Book"><br>
     <select id="genre">
         <option value="SciFi">Science Fiction</option>
@@ -35,6 +36,8 @@
     <input id="em" placeholder="Email">
     <input type="file"onchange='loadFile(event)' >
     <img style="display: none"id="image">
+
+    <input style="width: 300;"placeholder='URL for pdf( only if an ebook )' id="uri">
     <canvas id="phot" height='500' width='500'></canvas>
     <button onclick="post()">Done</button>
     <p id="pd"></p>
@@ -60,7 +63,9 @@
               name:document.getElementById('name').value,
               image:canvas.toDataURL(),
               bookName:document.getElementById('nameOB').value,
-              eMail:document.getElementById('em').value
+              eMail:document.getElementById('em').value,
+              link:document.getElementById('uri').value,
+              type: document.getElementById('ty').value
           });
 document.getElementById('pd').innerHTML="Your Book Is Posted <button onclick='back()'>Main Page</button>"
       }

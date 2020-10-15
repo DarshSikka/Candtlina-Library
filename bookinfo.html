@@ -21,7 +21,7 @@
   <center>
     <h1 id="head"></h1>
     <div id="inf"></div>
-    <button id="but"onclick='red()' style="display:none"> I want This</button>
+    <button onclick='red()' style='display:none;' id="but"> I want This</button>
     </center>
     <script>
         var bk=localStorage.getItem('bookToCheck');
@@ -46,10 +46,16 @@ descrip='<textarea readonly="true">'+obj['description']+'</textarea>';
 gtf="<h3>Get This From:" + obj['name']+'</h3>';
 localStorage.setItem('to', gtf);
 tel="<a href='tel:"+obj['phone']+"'>"+obj['phone']+'</a><br>';
-email="<a href='mailto:"+obj['eMail']+"'>"+obj['eMail']+'</a><br>'
-localStorage.setItem('guysMail', obj['eMail']);
+email="<a href='mailto:"+obj['eMail']+"'>"+obj['eMail']+'</a><br>';
 document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+tel+email;
-      document.getElementById('but').style.display='';
+if(obj['type']=='Ebook'){
+  uri='<a href="'+obj['link']+'">visit page</a>';
+  document.getElementById('inf').innerHTML=phot+genre+descrip+gtf+tel+email+uri;
+}
+localStorage.setItem('guysMail', obj['eMail']);
+
+
+document.getElementById('but').style.display='';
   });
   function red(){
     window.location='data.html';
