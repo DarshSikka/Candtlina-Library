@@ -12,6 +12,10 @@
             background-color:blue;
             color:white;
         }
+        input, select{
+            height:50px;
+             widrh:100px;
+        }
     </style>
 </head>
 <body>
@@ -34,6 +38,11 @@
     <input id="name"placeholder="Your Name">
     <input id="pn"placeholder='Phone Number'>
     <input id="em" placeholder="Email">
+    <select id="campus">
+        <option>Kidwai Nagar</option>
+        <option>AV. Nagar</option>
+        <option>West Ansari Nagar</option>
+     <select>
     <input type="file"onchange='loadFile(event)' >
     <img style="display: none"id="image">
 
@@ -63,6 +72,7 @@
               description:document.getElementById('desc').value,
               phone:document.getElementById('pn').value,
               name:document.getElementById('name').value,
+              campus:document.getElementById('campus').value,
               image:canvas.toDataURL(),
               bookName:document.getElementById('nameOB').value,
               eMail:document.getElementById('em').value,
