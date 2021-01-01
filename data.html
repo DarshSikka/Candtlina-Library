@@ -9,11 +9,11 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <style>
         body{
-            background-color:blue;
+            background-color:#008891;
             color:WHITE;
         }
-        input{
-            height:40px;
+        input, select{
+            height:60px;
             margin: 50px;
             width:30%;
             color:red;
@@ -37,6 +37,7 @@
     <input id='name' placeholder="Your Name"><br>
     <input id="tel" placeholder="Telephone Number"><br>
     <input type="email" id="mail"placeholder="Email Adress"><br>
+    <select id="camp"> <option>Kidwai Nagar</option><option>AV Nagar</option><option>West Ansari Nagar</option></select>
     <button onclick="Pli()" id="is"> Place Issue</button>
     </center>
     <script>
@@ -61,7 +62,8 @@
       Bookname:localStorage.getItem('sell'),
       telephone:document.getElementById('tel').value,
       email:document.getElementById('mail').value,
-      givermail:localStorage.getItem('guysMail')
+      givermail:localStorage.getItem('guysMail'),
+      campus_of_taker:document.getElementById('camp').value
     });
     document.getElementById('is').style.display='none';
     document.getElementById('cont').innerHTML+="<h3>Order Placed</h3>"

@@ -9,13 +9,18 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <style>
         body{
-            background-color:blue;
+            background-color:#008891;
             color:white;
         }
-        input, select{
+        input, select, button{
             height:50px;
-             width:150px;
+             width:300px;
             font-size:30px
+        }
+        textarea{
+            height:100px;
+            width:300px;
+            font-size:30px;
         }
     </style>
 </head>
@@ -43,14 +48,15 @@
         <option>Kidwai Nagar</option>
         <option>AV. Nagar</option>
         <option>West Ansari Nagar</option>
-     <select>
-    <input type="file"onchange='loadFile(event)' >
-    
-    <input style="width: 300;"placeholder='URL for pdf( only if an ebook )' id="uri">
-    <canvas id="phot" height='500' width='500'></canvas>
-         <img style="display: none"id="image">
+    </select>
+    <input type="file"onchange='loadFile(event)'>
+    <input style="width: 300;"placeholder='URL( only for ebook )' id="uri">
+   
     <button onclick="post()">Done</button>
     <p id="pd"></p>
+    <canvas id="phot" height='500' width='500'></canvas>
+    <img style="display: none"id="image">
+    
     <script>  var firebaseConfig = {
     apiKey: "AIzaSyAwHtnjf_H1r5L4KD3S3R6dzqgIXzcF5t8",
     authDomain: "masterbookshelf.firebaseapp.com",
@@ -78,7 +84,8 @@
               bookName:document.getElementById('nameOB').value,
               eMail:document.getElementById('em').value,
               link:document.getElementById('uri').value,
-              type: document.getElementById('ty').value
+              type: document.getElementById('ty').value,
+              status:'Available(Currently Anauthorized by library)'
           });
 document.getElementById('pd').innerHTML="Your Book Is Posted <button onclick='back()'>Main Page</button>"
       }

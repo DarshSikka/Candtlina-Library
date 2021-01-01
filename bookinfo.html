@@ -9,7 +9,7 @@
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <style>
       body{
-        background-color:darkblue;
+        background-color:#008891;
         color:white;
       }
       a{
@@ -46,13 +46,16 @@ phot='<img src="'+obj['image']+'"><br>';
 genre='<h3>Genre:'+obj['genre']+'</h3>';
 descrip='<textarea readonly="true">'+obj['description']+'</textarea>';
 gtf="<h3>Get This From:" + obj['name']+'</h3>';
+campus="<h3>Campus:" + obj['campus']+'</h3>';
 localStorage.setItem('to', gtf);
 tel="<a href='tel:"+obj['phone']+"'>"+obj['phone']+'</a><br>';
 email="<a href='mailto:"+obj['eMail']+"'>"+obj['eMail']+'</a><br>';
-document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+tel+email;
+status="<h3>Status:"+obj['status']+'</h3>'
+document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+campus+tel+email+status;
+
 if(obj['type']=='Ebook'){
   uri='<a href="'+obj['link']+'">visit page</a>';
-  document.getElementById('inf').innerHTML=phot+genre+descrip+gtf+tel+email+uri;
+  document.getElementById('inf').innerHTML=phot+genre+descrip+gtf+campus+tel+email+uri+status;
 }
 localStorage.setItem('guysMail', obj['eMail']);
 

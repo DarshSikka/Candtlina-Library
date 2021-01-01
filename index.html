@@ -8,37 +8,53 @@
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Redressed&display=swap');
         body{
-            background-image: url(bg.png);
+            background-image: radial-gradient(#f3eac2, white);
             background-size: contain;
+            font-family: 'Redressed', cursive;
         }
         #pb{
-            background-color:yellow;
-            color: red;
-            height:100px;
+            background-image:url('pb.png');
+            height:200px !important;
+            width: 200px !important;
             width: fit-content;
-            font-size:55px;
         }
         h1, p, h3{
-            color:white;
+            color:blue;
+        }
+        h3{
+            font-size:25pt;
         }
         a{
             font-size: 35px;
-            color:white;
+            color:blue;
             text-decoration: underline;
             text-decoration-color: black;
         }
         img{
             height:200px; width:200px;
         }
+        input{
+            height:50px;
+            font-size:30px;
+            width:70%;
+        }
+        #spec{
+            color:#0f3057;
+            font-family: 'Redressed', cursive;
+            font-size:102px;
+        }
+        #div1{
+            background-color:lightcoral;
+        }
     </style>
 </head>
 <body>
     <center>
- 
-    <button id="pb" onclick="pb()">Post A Book</button><br>
+        <div id="div1"><h1 id="spec">MyNeighbourhoodLibrary</h1></div>
+    <img id="pb" onclick="pb()" src='post.png'><br>
     <a  href="https://darshsikka.github.io/Dashbook/">Chat</a>
-
     <h1>All Books</h1>
     <input id="myInput" placeholder="Search For A Book"onkeydown="myFunction()">
     <div id="ab">
