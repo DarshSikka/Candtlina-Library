@@ -55,6 +55,8 @@
   function Pli(){
       today=new Date();
     now=String(today.getMonth())+String(today.getDay())+String(today.getHours())+String(today.getMinutes());
+    x='true::'+document.getElementById('name').value;
+    localStorage.setItem('returning', x)
     console.log(now);
     firebase.database().ref('/').child(now).update({
       Taker:document.getElementById('name').value,
@@ -66,7 +68,8 @@
       campus_of_taker:document.getElementById('camp').value
     });
     document.getElementById('is').style.display='none';
-    document.getElementById('cont').innerHTML+="<h3>Order Placed</h3>"
+    document.getElementById('cont').innerHTML+="<h3>Order Placed</h3>";
+    window.location="bookinfo.html";
   }
     </script>
 </body>

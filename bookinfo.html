@@ -52,7 +52,17 @@ tel="<a href='tel:"+obj['phone']+"'>"+obj['phone']+'</a><br>';
 email="<a href='mailto:"+obj['eMail']+"'>"+obj['eMail']+'</a><br>';
 status="<h3>Status:"+obj['status']+'</h3>'
 document.getElementById('inf').innerHTML+=phot+genre+descrip+gtf+campus+tel+email+status;
-
+if(localStorage.getItem('returning')!=''){
+    total_arr=localStorage.getItem('returning');
+    console.log(total_arr)
+    total_arr=total_arr.split('::')
+    name_new=total_arr[1]
+    console.log(name_new);
+    firebase.database().ref('/').child(obj['bookName']).update({
+      status:'Unaivalable Currently. Issued by:'+name_new
+    });
+    localStorage.setItem('returning', '')
+  }
 if(obj['type']=='Ebook'){
   uri='<a href="'+obj['link']+'">visit page</a>';
   document.getElementById('inf').innerHTML=phot+genre+descrip+gtf+campus+tel+email+uri+status;
@@ -68,6 +78,7 @@ document.getElementById('but').style.display='';
 localStorage.setItem('sell', document.getElementById('head').innerHTML);
 
   }
+
     </script>
 </body>
 </html>
