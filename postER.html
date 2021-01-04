@@ -69,9 +69,15 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  if(localStorage.getItem('profile')!=null){
+      new_prof=JSON.parse(localStorage.getItem('profile'));
+      document.getElementById('name').value=new_prof['name'];
+      document.getElementById('pn').value=new_prof['pn'];
+      document.getElementById('em').value=new_prof['em'];
+      document.getElementById('campus').value=new_prf['em'];
+  }
 
       var canvas=document.getElementById('phot');
-            
       ctx=canvas.getContext('2d');
       function post(){
           firebase.database().ref('/').child(document.getElementById('nameOB').value).update({
@@ -87,6 +93,13 @@
               type: document.getElementById('ty').value,
               status:'Available'
           });
+          var profile={};
+          profile['name']=document.getElementById('name').value;
+          profile['pn']=document.getElementById('pn').value;
+          profile['campus']=document.getElementById('campus').value;
+          profile['em']=document.getElementById('em').value;
+          localStorage.setItem('profile', JSON.stringify(profile));
+          
 document.getElementById('pd').innerHTML="Your Book Is Posted <button onclick='back()'>Main Page</button>"
       }
       function back(){

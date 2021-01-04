@@ -22,6 +22,7 @@
     <h1 id="head"></h1>
     <div id="inf"></div>
     <button onclick='red()' style='display:none;' id="but"> I want This</button>
+    <button onclick='ret()'>Return this book</button>
     </center>
     <script>
         var bk=localStorage.getItem('bookToCheck');
@@ -77,6 +78,11 @@ document.getElementById('but').style.display='';
     window.location='data.html';
 localStorage.setItem('sell', document.getElementById('head').innerHTML);
 
+  }
+  function ret(){
+
+    localStorage.setItem('book', document.getElementById('head').innerHTML);
+    window.location='return.html'
   }
 
     </script>

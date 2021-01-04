@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return Your Book</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <style>
+
+body{
+            background-color:#008891;
+            color:white;
+            text-align: center;
+        }
+        button{
+            height:300px;
+            width:300px;
+            background-color: red;
+            color:white;
+            font-size:50pt;
+        }
+    </style>
+</head>
+<body>
+     <button onclick='ret()'>Return</button>
+     <button onclick='bk()'>Back</button>
+<script>
+    book=localStorage.getItem('book');
+     var firebaseConfig = {
+    apiKey: "AIzaSyAwHtnjf_H1r5L4KD3S3R6dzqgIXzcF5t8",
+    authDomain: "masterbookshelf.firebaseapp.com",
+    databaseURL: "https://masterbookshelf-default-rtdb.firebaseio.com",
+    projectId: "masterbookshelf",
+    storageBucket: "masterbookshelf.appspot.com",
+    messagingSenderId: "170203220147",
+    appId: "1:170203220147:web:08e4f415a0ed3b4d8208c6",
+    measurementId: "G-B1GC6KWCL4"
+  };
+  firebase.initializeApp(firebaseConfig);
+  function ret(){
+      firebase.database().ref('/').child(book).update({
+          status:'Available'
+      });}
+    function bk(){
+        window.location='bookinfo.html';
+    }
+</script>
+</body>
+</html>
