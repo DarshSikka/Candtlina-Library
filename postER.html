@@ -69,16 +69,17 @@
   };
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
+  var canvas=document.getElementById('phot');
+      var ctx=canvas.getContext('2d');
   if(localStorage.getItem('profile')!=null){
       new_prof=JSON.parse(localStorage.getItem('profile'));
       document.getElementById('name').value=new_prof['name'];
       document.getElementById('pn').value=new_prof['pn'];
       document.getElementById('em').value=new_prof['em'];
-      document.getElementById('campus').value=new_prf['em'];
+      document.getElementById('campus').value=new_prof['campus'];
   }
 
-      var canvas=document.getElementById('phot');
-      ctx=canvas.getContext('2d');
+      
       function post(){
           firebase.database().ref('/').child(document.getElementById('nameOB').value).update({
               genre:document.getElementById('genre').value,
