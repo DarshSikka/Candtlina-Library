@@ -7,6 +7,7 @@
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+    <link rel="icon" href="My Library.png" type="image/x">
     <style>
       body{
         background-color:#008891;
@@ -22,7 +23,7 @@
     <h1 id="head"></h1>
     <div id="inf"></div>
     <button onclick='red()' style='display:none;' id="but"> I want This</button>
-    <button onclick='ret()' style='display:none;'id="ret">Return this book</button>
+    <button onclick='ret()'>Return this book</button>
     </center>
     <script>
         var bk=localStorage.getItem('bookToCheck');
@@ -72,7 +73,6 @@ localStorage.setItem('guysMail', obj['eMail']);
 
 if(obj['type']!='Ebook'){
 document.getElementById('but').style.display='';
-    document.getElementById('ret').style.display='';
 }
   });
   function red(){
